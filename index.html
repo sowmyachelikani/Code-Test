@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<title>Feature Request App</title>
+  <link rel="stylesheet" href="style.css" >
+<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" crossorigin="anonymous"></script>
+ </head>
+
+ <body>
+   <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <h2>Feature Request App</h2>
+    </div>
+  </nav>
+   <div class="container">
+    <div class="row">
+      <form class="form-horizontal" id="form_request">
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-6">
+            <input type="text" name='title' class="form-control" id="tiltle" placeholder="Enter Title">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" id="Description" rows="3" name="desc" placeholder="Enter Description"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="client" class="col-sm-2 control-label">Client</label>
+          <div class="col-sm-6">
+            <select class="form-control col-sm-6" id="client" name='client'>
+              <option value="Client A">Client A</option>
+              <option value="Client B">Client B</option>
+              <option value="Client C">Client C</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="client" class="col-sm-2 control-label">Client Priority</label>
+          <div class="col-sm-6">
+            <select class="form-control col-sm-6" id="client_priority" name='client_pr'>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="client" class="col-sm-2 control-label">Target Date</label>
+          <div class="col-sm-6">
+            <div class='input-group date' id='datetimepicker'>
+              <input type='text' class="form-control" name="date"/>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="client" class="col-sm-2 control-label">Product Area</label>
+          <div class="col-sm-6">
+            <select class="form-control col-sm-6" id="client_priority" name='product_area'>
+              <option value="Policies">Policies</option>
+              <option value="Billing">Billing</option>
+              <option value="Claims">Claims</option>
+              <option value="Reports">Reports</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id='myModal'>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Request</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="modal_res">Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </body>
+ <script>
+    $('#datetimepicker').datepicker();
+    $( "#form_request" ).submit(function( event ) {
+      event.preventDefault();
+      var form_values = $(this).serializeArray();
+      var res_str = ''
+      $.each(form_values, function(i, obj){
+        res_str += '<p>' + obj.name + ':' + obj.value + '</p>'
+      })
+      $('#modal_res').html(res_str)
+      $('#myModal').modal('show')
+    });
+ </script>
+</html>

@@ -1,0 +1,17 @@
+body {
+  font-family: "Arial"
+}
+.main-image {
+  border: solid pink 4px;
+  border-radius: 50%;
+}
+
+h1 {
+background-image: #e2e2e2;
+padding: 5px;
+
+}
+
+.sec-ti{
+  text-transform: uppercase;
+}
